@@ -147,7 +147,8 @@ function HashTable() {
  HashTable.prototype.hash = function(inp) {
   let hs = 0;
   for(let i = 0; i < inp.length; i++ ) {
-    hs +=  inp.charCodeAt(i);
+    hs = hs + inp.charCodeAt(i);
+    // hs+= inp.charCodeAt(i); 
    }
      return hs % this.numBuckets; 
   }
@@ -167,12 +168,17 @@ HashTable.prototype.set = function(clave, valor) {
 
 HashTable.prototype.get = function(clave) { 
  var indice = this.hash(clave);
- return this.buckets[indice][clave];
+ return this.buckets[indice][clave]; 
 }
 
 HashTable.prototype.hasKey = function(clave) { 
   var indice = this.hash(clave);
  return !!this.buckets[indice][clave];
+
+//  OTRA FORMA DE HACERLO
+ // var chek = this.get(clave);
+//  if(chek) return true; 
+//  return false;
 }
 
 // No modifiquen nada debajo de esta linea
